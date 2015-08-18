@@ -3,7 +3,7 @@
  * Plugin Name: Fiat Sidebar Nav
  * Plugin URI: http://fiatinsight.com
  * Description: A plugin that adds a sidebar nav
- * Version: 1.0
+ * Version: 2.0
  * Author: Ben Zumdahl
  * Author URI: http://fiatinsight.com
  */
@@ -11,20 +11,20 @@
 	if(!function_exists('get_post_top_ancestor_id')){
 		function get_post_top_ancestor_id(){
     	global $post;
-    
+
     if($post->post_parent){
         $ancestors = array_reverse(get_post_ancestors($post->ID));
         return $ancestors[0];
     }
-    
+
     return $post->ID;
 	}}
 
- 
+
  class Fiat_Sidebar_Nav extends WP_Widget {
-    function Fiat_Sidebar_Nav() {
-        $widget_ops = array( 'classname' => 'widget_fiat_sidebar_nav', 'description' => __( "Fiat Sidebar Nav" ) );
-        $this->WP_Widget('my_avatar', __('Fiat Sidebar Nav'), $widget_ops);
+    function __construct() {
+        $widget_ops = array( 'classname' => 'widget_fiat_sidebar_nav', 'description' => __( "Sidebar Nav" ) );
+        parent::__construct('my_avatar', __('Sidebar Nav'), $widget_ops);
     }
 
    function widget( $args, $instance ) {
@@ -34,7 +34,7 @@
         if ( !empty( $title ) ) { echo $before_title . $title . $after_title; } ?>
            	<ul class="page-list">
 				<?php wp_list_pages( array('title_li'=>'','depth'=>1,'child_of'=>get_post_top_ancestor_id()) ); ?>
-			</ul>	
+			</ul>
         <?php
         echo $after_widget;
     }
@@ -51,7 +51,7 @@
 
 ?>
 
-	
+
 
 <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>

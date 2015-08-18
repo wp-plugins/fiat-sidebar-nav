@@ -3,7 +3,7 @@ Contributors: benzumdahl
 Donate link: http://fiatinsight.com/
 Tags: sidebar nav, navigation, menu, side nav
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,3 +39,6 @@ Add CSS for these classes: page-list, page_item, current_page_item
 
 = 1.0 =
 Initial release.
+
+= 2.0 =
+Updated to accomodate PHP 4 Style Constructors.
